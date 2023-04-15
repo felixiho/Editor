@@ -12,8 +12,8 @@ export const colors = {
 
 const theme = extendTheme({
   fonts: {
-    heading: `open-sans, sans-serif`,
-    body: `open-sans, sans-serif`,
+    heading: `Outfit, sans-serif`,
+    body: `Outfit, sans-serif`,
   },
   colors: {
     brand: "#8B919F", 
