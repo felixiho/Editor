@@ -1,4 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
+import type { StyleFunctionProps } from "@chakra-ui/styled-system";
+import { mode } from "@chakra-ui/theme-tools";
 
 
 export const colors = {
@@ -11,13 +13,21 @@ export const colors = {
 
 
 const theme = extendTheme({
+  styles: {
+    global: (props: StyleFunctionProps) => ({
+      body: {
+        bg:  "#FAFAFA",
+      }
+    })
+  },
   fonts: {
-    heading: `Outfit, sans-serif`,
+    heading: `pvc, sans-serif`,
     body: `Outfit, sans-serif`,
   },
   colors: {
     brand: "#8B919F", 
   },
+  
 })
 
 export default theme

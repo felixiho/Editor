@@ -9,6 +9,7 @@ import '@fontsource/outfit/700.css'
 import '@fontsource/outfit/800.css'
 import '@fontsource/outfit/900.css'
  
+import 'react-quill/dist/quill.snow.css';
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import theme from '@/config/chakra'
