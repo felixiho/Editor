@@ -6,22 +6,23 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    Button, 
+    Button,
     Flex,
     Input,
     FormControl,
-    FormLabel, 
+    FormLabel,
     Select,
+    Switch,
 } from '@chakra-ui/react'
 import {  useState } from 'react'
 
 type AddVideoModalProps = {
     isOpen: boolean
     onClose: () => void
-    handleVideoEmbed: (pic: any) => void
+    handleSocialEmbed: (pic: any) => void
 }
 
-const AddVideoModal = ({ isOpen, onClose, handleVideoEmbed }: AddVideoModalProps) => {
+const AddSocialModal = ({ isOpen, onClose, handleSocialEmbed }: AddVideoModalProps) => {
     const [url, setUrl] = useState('')
     const [provider, setProvider] = useState('')
 
@@ -32,7 +33,7 @@ const AddVideoModal = ({ isOpen, onClose, handleVideoEmbed }: AddVideoModalProps
     }
 
     const handleSubmit = () => {
-        handleVideoEmbed(url)
+        handleSocialEmbed(url)
         cancleModal()
     }
 
@@ -42,21 +43,31 @@ const AddVideoModal = ({ isOpen, onClose, handleVideoEmbed }: AddVideoModalProps
             <ModalContent mt={[0, 40]} >
                 <ModalHeader color="#010E05" fontSize={"lg"}>Embed</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody> 
+                <ModalBody>
 
                     <Flex direction={"column"} w="full">
                         <FormControl size="sm">
-                            <FormLabel fontSize="xs">VIDEO PROVIDER</FormLabel>
+                            <FormLabel fontSize="xs">SOCIAL MEDIA PLATFORM</FormLabel>
                             <Select onChange={(e) => setProvider(e.target.value)} bg="#FAFAFA" size={"sm"}>
-                                <option>Youtube</option>
+                                <option>Facebook</option>
                             </Select>
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel fontSize="xs">URL</FormLabel>
-                            <Input value={url} onChange={e => setUrl(e.target.value)} placeholder="https://youtube.com/" />
+                            <Input value={url} onChange={e => setUrl(e.target.value)} placeholder="https://jungle/post/Earn-passive" />
                         </FormControl>
-                    </Flex> 
+
+                        <FormControl mt={4}>
+                            <FormLabel fontSize="xs">CODE</FormLabel>
+                            <Input value={url} onChange={e => setUrl(e.target.value)} placeholder="<iframe....>" />
+                        </FormControl>
+
+                        <FormControl mt={4} display={"flex"} width={"full"} justifyContent={"space-between"} >
+                            <FormLabel fontSize="xs">Disable Caption</FormLabel>
+                            <Switch id='isChecked'  colorScheme='green' />
+                        </FormControl>
+                    </Flex>
                 </ModalBody>
 
                 <ModalFooter justifyContent={"flex-start"}>
@@ -71,4 +82,4 @@ const AddVideoModal = ({ isOpen, onClose, handleVideoEmbed }: AddVideoModalProps
 }
 
 
-export default AddVideoModal;
+export default AddSocialModal;

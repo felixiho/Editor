@@ -3,14 +3,11 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    Flex,
-    MenuGroup,
+    Flex, 
     Text,
-    MenuDivider,
-    Image,
+    MenuDivider, 
     Button
-} from '@chakra-ui/react';
-import { useState } from 'react';
+} from '@chakra-ui/react'; 
 import { IconContext, } from "react-icons";
 import { TbCrossFilled } from 'react-icons/tb';
 import { BsImage, BsCameraVideoFill, BsStars } from 'react-icons/bs';

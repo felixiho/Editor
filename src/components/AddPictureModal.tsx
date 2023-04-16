@@ -8,10 +8,8 @@ import {
     ModalCloseButton,
     Button,
     Heading,
-    Text,
-    Box,
-    Flex,
-    Input,
+    Text, 
+    Flex, 
     Image
 } from '@chakra-ui/react'
 import { ChangeEvent, useRef, useState } from 'react'

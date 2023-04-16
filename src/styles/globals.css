@@ -1,17 +1,7 @@
 .ql-container.ql-snow {
     border: 0px solid #ccc;
 }
-
-.ql-snow .ql-picker {
-    /* height: 40px; */
-}
-
-.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{
-    
-}
-
-.ql-border-right{
-}
+ 
 
 .ql-custom-toolbar-child  {
     padding: 4px;

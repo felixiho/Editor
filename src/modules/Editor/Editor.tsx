@@ -1,28 +1,16 @@
-/* eslint-disable */
-
+ 
 import {
-    Box, Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    Flex,
-    MenuGroup,
-    Text,
-    MenuDivider,
-    Image,
-    Button
+    Box
 } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
-import { ClassAttributes, useEffect, useId, useRef, useState } from 'react';
-import Toolbar from './Toolbar';
-import { IconContext, } from "react-icons";
-import { TbCrossFilled } from 'react-icons/tb';
-import { BsImage, BsCameraVideoFill, BsStars } from 'react-icons/bs';
+import {  useRef, useState } from 'react';
+import Toolbar from './Toolbar'; 
 import AttachmentMenu from './AttachmentMenu';
 import AddPictureModal from '@/components/AddPictureModal';
 import { ReactQuillProps } from 'react-quill';
 import AddVideoModal from '@/components/AddVideoModal';
 import { getVideoUrl } from '@/config/utils';
+import AddSocialModal from '@/components/AddSocialModal';
 
 type PropsQuill = ReactQuillProps & {
     forwardedRef: any
@@ -45,28 +33,12 @@ const Editor = () => {
     const [showPictureModal, setShowPictureModal] = useState(false)
     const [showVideoModal, setShowVideoModal] = useState(false)
     const [showSocialModal, setShowSocialModal] = useState(false)
-
-
-    const modules = {
-        toolbar: {
-            container: "#toolbar",
-            //   handlers: {
-            //     insertStar: insertStar
-            //   }
-        },
-        clipboard: {
-            matchVisual: false,
-        }
-    };
-
-    const handleClosePictureModal = () => {
-        setShowPictureModal(false)
-    }
+ 
 
     const handleImageEmbed = (fileUrl: string) => {
-        if (!quillRef.current || !fileUrl) return
-        // tslint-disable
-        const quill = quillRef.current.getEditor() as unknown as any // eslint-disable
+        if (!quillRef.current || !fileUrl) return 
+        const current = quillRef.current as unknown as any
+        const quill =  current.getEditor() 
         const range = quill.getSelection(true);
         quill.insertEmbed(range.index, "image", fileUrl);
         quill.setSelection(range.index + 1);
@@ -74,12 +46,34 @@ const Editor = () => {
 
     const handleVideoEmbed = (url: string) => {
         if (!quillRef.current || !url) return
-        const quill = quillRef.current.getEditor() as unknown as any // eslint-disable
+        const current = quillRef.current as unknown as any
+        const quill =  current.getEditor()
         const range = quill.getSelection(true);
-        const formattedUrl = getVideoUrl(url)  
+        const formattedUrl = getVideoUrl(url)
         quill.insertEmbed(range.index, "video", formattedUrl);
         quill.setSelection(range.index + 1);
     }
+
+    const handleSocialEmbed = (url: string) => { 
+    } 
+
+    const modules = {
+        toolbar: {
+            container: "#toolbar",
+            handlers: { 
+            }
+        },
+        clipboard: {
+            matchVisual: false,
+        }
+    };
+
+    const formats = [
+        'header', 'font', 'background', 'color', 'code', 'size',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent', 'script', 'align', 'direction',
+        'link', 'image', 'code-block', 'formula', 'video'
+      ]
 
     return (
         <Box as="section" w="100%">
@@ -91,6 +85,7 @@ const Editor = () => {
                 <ReactQuill
                     forwardedRef={quillRef}
                     modules={modules}
+                    formats={formats}
                     style={{ border: "0" }}
                     theme="snow" value={value}
                     placeholder='Start typing'
@@ -103,8 +98,9 @@ const Editor = () => {
                 />
             </Box>
 
-            <AddPictureModal handleImageEmbed={handleImageEmbed} isOpen={showPictureModal} onClose={handleClosePictureModal} />
+            <AddPictureModal handleImageEmbed={handleImageEmbed} isOpen={showPictureModal} onClose={() => setShowPictureModal(false)} />
             <AddVideoModal handleVideoEmbed={handleVideoEmbed} isOpen={showVideoModal} onClose={() => setShowVideoModal(false)} />
+            <AddSocialModal handleSocialEmbed={handleSocialEmbed} isOpen={showSocialModal} onClose={() => setShowSocialModal(false)} />
         </Box>
     );
 }

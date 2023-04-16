@@ -1,6 +1,4 @@
-import { Box } from "@chakra-ui/react";
-
-
+ 
 const Toolbar = () => {
     return (
         <div style={{ background: 'white', borderRadius: '5px', borderColor: "#E7F1E9;", }} id="toolbar" className="ql-custom-toolbar">
