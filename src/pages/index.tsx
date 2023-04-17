@@ -11,7 +11,7 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <Flex mb={24} p={[4,6, 20]} w="full" as="section" wrap={"wrap"} alignContent={"flex-start"} justifyContent={"center"}  >
-      <Heading w="full" textAlign={"center"}>Wazobia Take Home</Heading>
+      <Heading w="full" textAlign={"center"}>Wazobia Editor</Heading>
       <Flex maxW={"762px"} w={"full"} wrap="wrap" border="1px solid #E7F1E9" mt={32} p={[4, 8]} rounded={"lg"} >
         <Title />
         <Editor />
