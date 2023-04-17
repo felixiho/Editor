@@ -14,7 +14,7 @@ import AddSocialModal from '@/components/AddSocialModal';
 
 type PropsQuill = ReactQuillProps & {
     forwardedRef: any
-}
+} 
 const ReactQuill = dynamic(
     async () => {
         const { default: RQ } = await import("react-quill");
@@ -26,7 +26,8 @@ const ReactQuill = dynamic(
     }
 );
 
-
+ReactQuill.displayName = 'ReactQuill'
+ 
 const Editor = () => {
     let quillRef = useRef(null)
     const [value, setValue] = useState('')
@@ -106,4 +107,6 @@ const Editor = () => {
 }
 
 Editor.displayName = "Editor"
+
+
 export default Editor;
