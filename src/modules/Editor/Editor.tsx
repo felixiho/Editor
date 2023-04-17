@@ -105,4 +105,5 @@ const Editor = () => {
     );
 }
 
+Editor.displayName = "Editor"
 export default Editor;
